@@ -8,7 +8,13 @@ option(LIBIGL_WITH_OPENGL            "Use OpenGL"         ON)
 option(LIBIGL_WITH_OPENGL_GLFW       "Use GLFW"           ON)
 include(libigl)
 
+# CGAL
+find_package(CGAL)
+
 # Add your project files
 file(GLOB SRC_FILES *.cpp)
 add_executable(${PROJECT_NAME} ${SRC_FILES})
-target_link_libraries(${PROJECT_NAME} PUBLIC igl::core igl::opengl_glfw)
+target_link_libraries(${PROJECT_NAME} PUBLIC 
+    igl::core
+    igl::opengl_glfw
+    CGAL::CGAL)
